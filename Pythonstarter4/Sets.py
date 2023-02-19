@@ -1,60 +1,40 @@
+# iterator : any object that contains a countable number of values
+# iterator : any object that can be traversed / looped/
+# any object that implements the iterator protocol , _iter_() and _next_()
 
-shoppingSet = {"Bread","Sugar","Salt"}
-print(shoppingSet)
+# iterator vs Iterable  : iterables (lists,strings,tuples,sets,dictionaries) all have the method _iter_() / iter()
+# iter() method enables objects to be traversed/ looping
+mytuple = ("1","2",3)
+myIterable = iter(mytuple)
+# access to the next()
+print(next(myIterable))
+print(next(myIterable))
+print(next(myIterable))
+x = "joseph"
+myIterable = iter(x)
+print(next(myIterable))
+# just loop over iterables using a for loop
 
-print(len(shoppingSet))
-
-for x in shoppingSet:
-    print(x)
-
-check = "Bread"
-print(check in shoppingSet)
-
-shoppingSet.add("Flour")
-print(shoppingSet)
-
-juiceFlavours = {"Mango","Passion","Apple"}
-shoppingSet.update(juiceFlavours)
-print(shoppingSet)
-
-simpleList = ["Oranges","Soap","spoons"]
-simpleTuple = ("Forks","Spades")
-set2 = {"item2","item3"}
-shoppingSet.update(simpleList)
-shoppingSet.update(simpleTuple)
-shoppingSet.update(set2)
-print(shoppingSet)
-
-
-
-set3 = {"item5",5}
-set4 = shoppingSet.union(set3)  # union creates a new set .
-print(set4)
-
-x = {"apple","banana"}
-y = {"microsoft","apple"}
-x.intersection_update(y)
-print(x)
-
-x = {"apple","banana"}
-y = {"microsoft","apple"}
-z = x.intersection(y)
-print(z)
-
-x = {"apple","banana"}
-y = {"microsoft","apple"}
-x.symmetric_difference_update(y)
-print(x)
-
-x = {"apple","banana"}
-y = {"microsoft","apple"}
-z = x.symmetric_difference(y)
-print(z)
-
-x = {"apple", "banana", "cherry", True, False}
-y = {"google", 1, "apple", 2, 0}
-z = x.symmetric_difference(y)
-print(z)
+# create an iterator that returns numbers , stating with 1 , and each sequence will increase by 1 -> 1,2,3,4,5
+# classes and objects
+class MyNumbers:
+    # making the class mynumbers an iterable using the iter method
+    def __iter__(self):
+        self.a = 1
+        return self
+    # next method to provide trasversal ability for my class
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        return x
+# object
+myclass = MyNumbers()
+myiter = iter(myclass)
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
 
 
 
